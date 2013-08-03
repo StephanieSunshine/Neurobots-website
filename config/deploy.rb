@@ -2,7 +2,7 @@ default_run_options[:pty] = true
 default_run_options[:shell] = "bash"
 
 
-set :deploy_to, "/home/chuck/deploy"
+set :deploy_to, "/srv/www/dev.neurobots.net"
 set :current_path, "#{deploy_to}/public_html"
 set :shared_path, "#{deploy_to}/shared"
 
@@ -52,7 +52,7 @@ namespace :file do
 end
 
 
- task :brand, :except => { :no_release => true } do
+ task :brand do
    puts "****     **                                 **                 **          "
    puts "/**/**   /**                                /**                /**         " 
    puts "/**//**  /**  *****  **   ** ******  ****** /**       ******  ******  ******"
