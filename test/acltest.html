@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Neurobots Layout Test</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css' />
+<script>
+$(function() {
+
+$( "#eventDisplay" ).accordion({
+collapsible: true,
+active: false
+});
+
+});
+</script>
+<style>
+textarea {
+    resize: none;
+}
+</style>
+</head>
+<body>
+<div id="eventDisplay" style='width: 900px'>
+<h3>New Access Control</h3>
+<div>
+<table class="acl">
+	    <tr><td>Access Level&nbsp;&nbsp;<select name="access_level"><option>1</option><option>2</option><option>3</option></td></tr>
+            <tr><td><input class="input_field" type="text" name="userid" size="25%"></td><td><input class="input_field" type="text" name="comment" size="55%"></td></tr>
+            <tr><td>Userid</td><td>Name / Comment</td></tr>
+	    </table> 
+</div>
+
+
+</div>
+</body>
+</html>

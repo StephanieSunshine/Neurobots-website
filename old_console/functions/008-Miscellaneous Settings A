@@ -1,0 +1,33 @@
+        <div class="section section_with_padding" id="008"> 
+        
+    <h2>Miscellaneous Settings</h2>
+            <div class="clear h20"></div>        
+        <div class="clear h20"></div>  
+            <div style="height: 548px">
+            <form id="misc" action="/websockets/push.php" method="post">
+            <input type="hidden" name="command" value="update_misc">
+            <script type="text/javascript">
+            document.write('<input type="hidden" name="bot_userid" value="'+getBotId()+'">');
+            document.write('<input type="hidden" name="magic_key" value="'+getMagicKey()+'">');
+            document.write('<h3><a target="_blank" href="http://www.neurobots.net/botstats.php?id='+getId()+'">Link To Your Public Bot Stats</a></h3>');
+            </script>
+	    <br />
+	    <br />
+	    <table>
+	    <tr><td>&nbsp;&nbsp;Give Moderators Level 1 Access&nbsp;&nbsp;</td><td><input type="checkbox" id='modsToLvl1' name="modsToLvl1" value=1" /></td></tr>
+	    <tr><td>&nbsp;&nbsp;Start With Slide On</td><td><input type="checkbox" id='slideSwitch' name="startSlide" value=1" /></td></tr>
+	    <tr><td>&nbsp;&nbsp;Start With Queue On</td><td><input type="checkbox" id='queueSwitch' name="startQueue" value=1" /></td></tr>
+	    <tr><td>&nbsp;&nbsp;Start With Stats On</td><td><input type="checkbox" id='statsSwitch' name="startStats" value=1" /></td></tr>
+	    <tr><td>&nbsp;&nbsp;Start With AutoDJ On</td><td><input type="checkbox" id='autoDjSwitch' name="startAutoDj" value=1" /></td></tr>
+	    <tr><td>&nbsp;&nbsp;Dj when no one else is</td><td><input type="checkbox" id='AloneDjSwitch' name="startAutoDj" value=1" /></td></tr>
+	    </table>
+	    <script>$("tr:odd").css("background-color", "#222222");</script>
+	    <br /><br />
+	    <button id="sayingsButton">Upload New Saying List</button><br /><br />
+	    <button id="sayingsButton">Reset stats</button><br /><br />
+	    <button id="sayingsButton">Change Password</button>
+            </form>
+            </div>
+            <div class="my_nav_btn"><script type="text/javascript"> functions_list('misc'); </script></div>
+
+        </div> 

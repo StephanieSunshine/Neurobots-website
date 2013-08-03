@@ -1,0 +1,21 @@
+        <div class="section section_with_padding" id="005"> 
+            <h2>Events</h2>
+            <div class="clear h20"></div>        
+            <div class="clear h20"></div>  
+            <div style="height: 548px; overflow-y: auto;">
+            <form id="events" action="/websockets/push.php" method="post">
+            <input type="hidden" name="command" value="update_events">
+            <script type="text/javascript">
+            document.write('<input type="hidden" name="bot_userid" value="'+getBotId()+'">');
+            document.write('<input type="hidden" name="magic_key" value="'+getMagicKey()+'">');
+            </script>
+	    <div id="eventsDisplayWrapper">
+            <div id="eventsDisplay" style="width: 90%; margin-left: auto; margin-right: auto">
+            </div>
+            </div>           
+            </form>
+            </div>
+                      <div class="my_nav_btn"><script type="text/javascript"> functions_list('events'); </script></div>
+   
+         
+        </div> 

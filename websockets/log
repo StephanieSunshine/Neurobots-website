@@ -1,0 +1,37 @@
+
+update_basics running
+
+Inside update_basics
+SQL:
+UPDATE users set bot_userid='51e8baeaeb35c17a34d39670', bot_authid='tBFVMqzdWUhGrbGbKROauxxs', bot_roomid='51e8c19deb35c17a34d396b4', owner_userid='4f1e3e28590ca21f70004663', command_trigger='/' WHERE magic_key="fNMhxYhdvcWHRhqFpSjqFsMFmHtc7nv"
+
+_POST
+array (
+  'bot_userid' => '51e8baeaeb35c17a34d39670',
+  'magic_key' => 'fNMhxYhdvcWHRhqFpSjqFsMFmHtc7nv',
+  'command' => 'update_basics',
+  'bot_authid' => 'tBFVMqzdWUhGrbGbKROauxxs',
+  'bot_roomid' => '51e8c19deb35c17a34d396b4',
+  'bot_ownerid' => '4f1e3e28590ca21f70004663',
+  'trigger' => '/',
+  'modsToLvl1' => '1"',
+  'startQueue' => '1"',
+  'startStats' => '1"',
+  'startAutoDj' => '1"',
+  'switchAloneDj' => '1"',
+)
+Ads
+array (
+)
+Triggers
+array (
+)
+Blacklist
+array (
+)
+Events
+array (
+)
+ACLS
+array (
+)

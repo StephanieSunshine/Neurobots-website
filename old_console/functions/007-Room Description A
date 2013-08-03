@@ -1,0 +1,40 @@
+        <div class="section section_with_padding" id="007"> 
+        
+    <h2>Public Stats Page</h2>
+            <div class="clear h20"></div>        
+        <div class="clear h20"></div>  
+            <div style="height: 548px">
+            <form id="botstats" action="/websockets/push.php" method="post">
+            <input type="hidden" name="command" value="update_botstats">
+            <script type="text/javascript">
+            document.write('<input type="hidden" name="bot_userid" value="'+getBotId()+'">');
+            document.write('<input type="hidden" name="magic_key" value="'+getMagicKey()+'">');
+            </script>
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Theme Settings</h3>
+
+	<center>
+		Background Color&nbsp;&nbsp;&nbsp;<input type="text" id="roomDescrBgColor" name="roomDescrBgColor" maxlength="7" size="3" value="#000000">&nbsp;&nbsp;(in hex)&nbsp;&nbsp;&nbsp;&nbsp;
+				
+			Color Theme&nbsp;&nbsp;&nbsp;
+			<select name="statsTheme" id="statsTheme">
+			<option>dark-hive</option>
+			<option>cupertino</option>
+			<option>mint-choc</option>
+			<option>south-street</option>
+			<option>blitzer</option>
+			<option>smoothness</option>
+			<option>le-frog</option>
+			<option>flick</option>
+			<option>humanity</option>
+			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button onClick="window.open('/images/thumb.jpg','Theme Preview',''); return false;">Theme Examples</button>
+			</center>
+		<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Room Description</h3>
+          	<center><textarea id='roomDescrText' name='roomDescrText' cols="100" rows="20"></textarea></center> 
+		<center><div style="font-size: 75%">&lt;br&gt;&lt;font&gt;&lt;a&gt;&lt;img&gt;&lt;p&gt; tags allowed</div></center>
+
+            </form>
+            </div>
+            <div class="my_nav_btn"><script type="text/javascript"> functions_list('botstats'); </script></div>
+
+        </div> 

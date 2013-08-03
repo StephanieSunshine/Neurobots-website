@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<link href="/private.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="/js/jquery.min.js"></script> 
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+
+<link rel="stylesheet" href="/juithemes/dark-hive/jquery-ui.css" />
+<link rel="stylesheet" href="/juithemes/dark-hive/jquery-ui.min.css" />
+<link rel="stylesheet" href="/juithemes/dark-hive/jquery.ui.theme.css" />
+
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css' />
+
+<script text="text/JavaScript">
+function getMagicKey() {
+var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == 'magic_key'){return pair[1];}
+
+       }
+}  
+
+$(function() { 
+	$( "input[type=submit]" ).button();
+	$( "#magickey" ).val(getMagicKey());
+});
+
+</script>
+</head>
+<body>
+<div style="padding: 100px">
+<h2>Upload Sayings</h2>
+<p>You need to make sure that your document is in CSV format.  One column wide, one saying per row, no header.  Google, Libre, Microsoft offices can all export easily into this format.  Just make sure you uncheck headers.  <a href="http://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">More on CSV Files.</a></p>
+<form action="upload_sayings.php" method="post" enctype="multipart/form-data">
+<input id="magickey" type="hidden" name="magic_key" value="" />
+<label for="file">Select a CSV File:</label>
+<input type="file" name="file" id="file" />
+<p>&nbsp;</p>
+<input type="submit" name="submit" value="Submit" /></form>
+</div>
+</body>
+</html>
