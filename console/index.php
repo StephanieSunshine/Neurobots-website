@@ -64,6 +64,49 @@ var isBotConnected = false;
 var socketController;
 var botPort = -1;
 
+
+function base32_encode(s) {
+ /* encodes a string s to base32 and returns the encoded string */
+ var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+ 
+ var parts = [];
+ var quanta= Math.floor((s.length / 5));
+ var leftover = s.length % 5;
+ 
+ if (leftover != 0) {
+  for (var i = 0; i < (5-leftover); i++) { s += '\x00'; }
+  quanta += 1;
+ }
+ 
+ for (i = 0; i < quanta; i++) {
+  parts.push(alphabet.charAt(s.charCodeAt(i*5) >> 3));
+  parts.push(alphabet.charAt( ((s.charCodeAt(i*5) & 0x07) << 2)
+                               | (s.charCodeAt(i*5+1) >> 6)));
+  parts.push(alphabet.charAt( ((s.charCodeAt(i*5+1) & 0x3F) >> 1) ));
+  parts.push(alphabet.charAt( ((s.charCodeAt(i*5+1) & 0x01) << 4)
+                               | (s.charCodeAt(i*5+2) >> 4)));
+  parts.push(alphabet.charAt( ((s.charCodeAt(i*5+2) & 0x0F) << 1)
+                               | (s.charCodeAt(i*5+3) >> 7)));
+  parts.push(alphabet.charAt( ((s.charCodeAt(i*5+3) & 0x7F) >> 2)));
+  parts.push(alphabet.charAt( ((s.charCodeAt(i*5+3) & 0x03) << 3)
+                               | (s.charCodeAt(i*5+4) >> 5)));
+  parts.push(alphabet.charAt( ((s.charCodeAt(i*5+4) & 0x1F) )));
+ }
+ 
+ var replace = 0;
+ if (leftover == 1) replace = 6;
+ else if (leftover == 2) replace = 4;
+ else if (leftover == 3) replace = 3;
+ else if (leftover == 4) replace = 1;
+ 
+ for (i = 0; i < replace; i++) parts.pop();
+ for (i = 0; i < replace; i++) parts.push("=");
+ 
+ return parts.join("");
+}
+
+
+
 <?php 
 
 $bot_userid = "";
@@ -151,7 +194,7 @@ function popupDialog() {
 
 function connectSocketController() {
   if (isControllerConnected == false) {
-    socketController = new WebSocket("ws://www.neurobots.net/controller");
+    //socketController = new WebSocket("ws://www.neurobots.net/controller");
 
     socketController.onopen = function () {
       socketController.send(botid+"|"+magicKey);
@@ -182,7 +225,7 @@ function connectSocketController() {
   }
 
 function connectSocketBot(port){
-socketBot  = new WebSocket("ws://www.neurobots.net/bot"+port);
+//socketBot  = new WebSocket("ws://www.neurobots.net/bot"+port);
 socketBot.onopen = function () {
   isBotConnected = true;
 }
@@ -204,13 +247,21 @@ socketBot.onclose = function () {
 }
 
 function startBot() {
-  if(isControllerConnected == false) { connectSocketController(); }
-  socketController.send("~~1$$"+botid+"$$"+magicKey+"$$");
+//  if(isControllerConnected == false) { connectSocketController(); }
+//  socketController.send("~~1$$"+botid+"$$"+magicKey+"$$");
+//  alert('http://www.neurobots.net/controller/start/'+base32_encode('["'+getBotId()+'", "'+getMagicKey()+'"]'));
+  var httpRequest = new XMLHttpRequest();
+  httpRequest.open('GET', 'http://www.neurobots.net/controller/start/'+base32_encode('["'+getBotId()+'", "'+getMagicKey()+'"]'), false);
+  httpRequest.send(null);
 }
 
 function stopBot() {
-  if(isControllerConnected == false) { connectSocketController(); }
-  socketController.send("~~2$$"+botid+"$$"+magicKey+"$$"); 
+//  if(isControllerConnected == false) { connectSocketController(); }
+//  socketController.send("~~2$$"+botid+"$$"+magicKey+"$$"); 
+//  alert('http://www.neurobots.net/controller/stop/'+base32_encode('["'+getBotId()+'", "'+getMagicKey()+'"]'));
+  var httpRequest = new XMLHttpRequest();
+  httpRequest.open('GET', 'http://www.neurobots.net/controller/stop/'+base32_encode('["'+getBotId()+'", "'+getMagicKey()+'"]'), false);
+  httpRequest.send(null);
 }
 
 //Seperate out here
@@ -761,8 +812,31 @@ $("#logwindow").css("height", $(window).height() - 200);
 $( "#storeMenu" ).accordion({active: false, heightStyle: "content"});
 $( "#pkgb_accordion" ).accordion({active: false, heightStyle: "content"});
     //Connect WebSocket Last
-    connectSocketController();
-  });
+//    connectSocketController();
+//	Bot polling
+
+var httpRequest;
+  httpRequest = new XMLHttpRequest();
+  httpRequest.onload = updateLight;
+  httpRequest.open('GET', 'http://www.neurobots.net/controller/status/'+base32_encode('["'+getBotId()+'", "'+getMagicKey()+'"]'), false);
+  httpRequest.send(null);
+
+setInterval(function(){
+	$("#bot_status").attr("src", "/images/on.png");
+var httpRequest;
+  httpRequest = new XMLHttpRequest();
+  httpRequest.onload = updateLight;
+  httpRequest.open('GET', 'http://www.neurobots.net/controller/status/'+base32_encode('["'+getBotId()+'", "'+getMagicKey()+'"]'), false);
+  httpRequest.send(null);
+},5000);
+
+});
+
+function updateLight() {
+// console.log(this.responseText);
+	if(this.responseText == 1) { $("#bot_status").attr("src", "/images/on.png"); }else{$("#bot_status").attr("src", "/images/off.png");}
+	
+}
 
 </script>
 </head>
@@ -785,7 +859,7 @@ $( "#pkgb_accordion" ).accordion({active: false, heightStyle: "content"});
 
 	<div id="content">
 
-<div style="padding: 5px 0px;" align="right"><button onClick="JavaScript:updateServer();">Update</button>&nbsp;<button onClick="JavaScript:startBot();">Start</button>&nbsp;<button onClick="JavaScript:stopBot();">Stop</button>&nbsp;<button onClick="JavaScript:logout();">Logout</button>&nbsp;&nbsp;<font id="email" style="font-size: 18px; vertical-align:bottom; "><?php include("test.php"); ?></font>&nbsp;&nbsp;<img src="/images/off.png" style="vertical-align:bottom;" id="bot_status" title="Bot Status">&nbsp;<img src="/images/off.png" style="vertical-align:bottom;" id="connection_status" title="Connection Status">&nbsp;&nbsp;<font id="uptime" style="font-size: 18px; vertical-align:bottom; ">Uptime: Unknown</font></div>
+<div style="padding: 5px 0px;" align="right"><button onClick="JavaScript:updateServer();">Update</button>&nbsp;<button onClick="JavaScript:startBot();">Start</button>&nbsp;<button onClick="JavaScript:stopBot();">Stop</button>&nbsp;<button onClick="JavaScript:logout();">Logout</button>&nbsp;&nbsp;<font id="email" style="font-size: 18px; vertical-align:bottom; "><?php include("test.php"); ?></font>&nbsp;&nbsp;<img src="/images/off.png" style="vertical-align:bottom;" id="bot_status" title="Bot Status">&nbsp;&nbsp;<font id="uptime" style="font-size: 18px; vertical-align:bottom; ">Uptime: Unknown</font></div>
 
 <div id="tabs">
   <ul>
@@ -843,7 +917,7 @@ $( "#pkgb_accordion" ).accordion({active: false, heightStyle: "content"});
         </div>';
     } 
 ?>
-    <h3>Cost: $5 month</h3>
+    <h3>Cost: $10 month</h3>
   </div>
   <h3>Package C</h3>
     <div>
@@ -871,7 +945,7 @@ $( "#pkgb_accordion" ).accordion({active: false, heightStyle: "content"});
         </div>';
     }
 ?>
-    <h3>Cost: $5 month</h3>
+    <h3>Cost: $10 month</h3>
   </div>
   <h3>Package D</h3>
   <div>

@@ -125,7 +125,7 @@ if ( form.password1.value.length < 8 ) {
                   <p>Before you begin, please create a new user with the turntable.fm service for your robot.  Then if you don\'t have it already, go 
                   <a href="http://alaingilbert.github.com/Turntable-API/bookmarklet.html">here</a> and use the bookmarklet to obtain the userid, the authid, 
                   and the roomid of your bot and room on turntable.fm.</p><p>Once you have those, creating a robot takes no time at all.  When you are ready, 
-                  click <a href="#Create">here</a> to begin creating your robot.</p>'; 
+                  click <a href="http://tt.fm/express_yourself9">here</a> and ask for Princess Ponyo to begin.</p>'; 
                 } 
                 ?>
                 </div>
@@ -157,13 +157,13 @@ if ( form.password1.value.length < 8 ) {
               <Center><h3>Forum</h3></center>
             </div></a>';            
             }else{
-            echo '<a href="#Create"><div class="box home_box1 color1">
+            echo '<a href="#VIP"><div class="box home_box1 color1">
               <div class="clear h20"></div>
               <div class="clear h20"></div>
               <div class="clear h20"></div>
               <div class="clear h20"></div>
               <div class="clear h20"></div>
-              <Center><h3>Create</h3></center>
+              <Center><h3>VIP</h3></center>
             </div></a>
             <a href="#Login"><div class="box home_box1 color2">
               <div class="clear h20"></div>
@@ -204,21 +204,21 @@ if ( form.password1.value.length < 8 ) {
                
         </div> <!-- END of home -->
         
-        <div class="section section_with_padding" id="Create"> 
-            <h2>Create a bot</h2>
+        <div class="section section_with_padding" id="VIP" style="overflow: auto"> 
+            <center><h2>Our VIP Lounge</h2></center>
             <div class="half left"> 
-               <p>Please come find us in <a href="http://tt.fm/express_yourself9">Express Yourself</a> to setup a new bot.</p> 
+		<center><a href="http://tt.fm/animal_farm2">Animal Farm</a><br /><p>Shoe | ERICBOT</p></center>
+<!--		<center><a href="http://tt.fm/animal_farm2">Animal Farm</a><br /><img src="http://i.imgur.com/8809USr.png" /> <p>Name | Bot</p></center>
+		<center><a href="http://tt.fm/animal_farm2">Animal Farm</a><br /><img src="http://i.imgur.com/8809USr.png" /> <p>Name | Bot</p></center>
+-->
             </div>
             
             <div class="half right">
-
-                <div class="clear h20">
-                <center><h3 style="color: red" id="form_error_message"></h3></center>
-                </div>
-                
-
-                
-            </div> 
+<!--		<center><a href="http://tt.fm/animal_farm2">Animal Farm</a><br /><img src="http://i.imgur.com/8809USr.png" /> <p>Name | Bot</p></center>
+		<center><a href="http://tt.fm/animal_farm2">Animal Farm</a><br /><img src="http://i.imgur.com/8809USr.png" /> <p>Name | Bot</p></center>
+		<center><a href="http://tt.fm/animal_farm2">Animal Farm</a><br /><img src="http://i.imgur.com/8809USr.png" /> <p>Name | Bot</p></center>
+-->        	
+	    </div> 
             <a href="#home" class="slider_nav_btn home_btn">home</a> 
 
         </div> 

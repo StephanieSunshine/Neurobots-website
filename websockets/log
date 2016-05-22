@@ -3,22 +3,22 @@ update_basics running
 
 Inside update_basics
 SQL:
-UPDATE users set bot_userid='51e8baeaeb35c17a34d39670', bot_authid='tBFVMqzdWUhGrbGbKROauxxs', bot_roomid='51e8c19deb35c17a34d396b4', owner_userid='4f1e3e28590ca21f70004663', command_trigger='/' WHERE magic_key="fNMhxYhdvcWHRhqFpSjqFsMFmHtc7nv"
+UPDATE users set bot_userid='51de6a25aaa5cd3668af22eb', bot_authid='MYupthBqywVDbkbksfPMTymr', bot_roomid='51e4a15caaa5cd221dc11f57', owner_userid='51da62d5aaa5cd0d320c7f94', command_trigger='/' WHERE magic_key="r0FCiETVrD2jE1ZGqNSW8xV3BoC4Bnj"
 
 _POST
 array (
-  'bot_userid' => '51e8baeaeb35c17a34d39670',
-  'magic_key' => 'fNMhxYhdvcWHRhqFpSjqFsMFmHtc7nv',
+  'bot_userid' => '51de6a25aaa5cd3668af22eb',
+  'magic_key' => 'r0FCiETVrD2jE1ZGqNSW8xV3BoC4Bnj',
   'command' => 'update_basics',
-  'bot_authid' => 'tBFVMqzdWUhGrbGbKROauxxs',
-  'bot_roomid' => '51e8c19deb35c17a34d396b4',
-  'bot_ownerid' => '4f1e3e28590ca21f70004663',
+  'bot_authid' => 'MYupthBqywVDbkbksfPMTymr',
+  'bot_roomid' => '51e4a15caaa5cd221dc11f57',
+  'bot_ownerid' => '51da62d5aaa5cd0d320c7f94',
   'trigger' => '/',
-  'modsToLvl1' => '1"',
-  'startQueue' => '1"',
-  'startStats' => '1"',
-  'startAutoDj' => '1"',
-  'switchAloneDj' => '1"',
+  'modsToLvl1' => '1',
+  'startQueue' => '1',
+  'startStats' => '1',
+  'startAutoDj' => '1',
+  'switchAloneDj' => '1',
 )
 Ads
 array (
